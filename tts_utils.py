@@ -4,8 +4,8 @@ from pydub.utils import which
 import os
 
 # Make sure ffmpeg is properly registered
-ffmpeg_path = r"F:\youtube\ffmpeg\bin\ffmpeg.exe"
-ffprobe_path= r"F:\youtube\ffmpeg\bin\ffprobe.exe"
+ffmpeg_path = r"ffmpeg\bin\ffmpeg.exe"
+ffprobe_path= r"ffmpeg\bin\ffprobe.exe"
 
 AudioSegment.converter = which(ffmpeg_path)
 AudioSegment.ffprobe = which(ffprobe_path)
