@@ -3,15 +3,12 @@ from pydub import AudioSegment
 from pydub.utils import which
 import os
 
-# Make sure ffmpeg is properly registered
-ffmpeg_path = r"ffmpeg\bin\ffmpeg.exe"
-ffprobe_path= r"ffmpeg\bin\ffprobe.exe"
-
-AudioSegment.converter = which(ffmpeg_path)
-AudioSegment.ffprobe = which(ffprobe_path)
+# Automatically find ffmpeg and ffprobe installed on the system
+AudioSegment.converter = which("ffmpeg")
+AudioSegment.ffprobe = which("ffprobe")
 
 # Extra precaution: Add to environment PATH at runtime
-os.environ["PATH"] += os.pathsep + os.path.dirname(ffmpeg_path)
+# os.environ["PATH"] += os.pathsep + os.path.dirname(ffmpeg_path)
 
 def text_to_speech(text, file_name, lang_code="hi"):
     tts = gTTS(text, lang=lang_code, slow=False)
